@@ -97,3 +97,4 @@ logs/
 pkged/pkged.go
 
 /confluence-html-markdown-converter
+/converter_*

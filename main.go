@@ -14,6 +14,7 @@ import (
 
 	"github.com/andybalholm/cascadia"
 	"github.com/mattn/godown"
+	"github.com/otiai10/copy"
 	"github.com/pkg/errors"
 	"golang.org/x/net/html"
 )
@@ -283,4 +284,15 @@ func main() {
 		os.Exit(1)
 	}
 
+	attachmentsDir := path.Join(sourceDir, "attachments")
+	if DirectoryExists(attachmentsDir) {
+		fmt.Println("Copying attachments...")
+		err := copy.Copy(attachmentsDir, path.Join(destDir, "attachments"))
+		if err != nil {
+			fmt.Print(err)
+			os.Exit(1)
+		}
+	}
+
+	fmt.Println("Done.")
 }
