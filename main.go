@@ -226,7 +226,7 @@ func main() {
 		fmt.Printf("Usage: %s <source dir> <dest dir> [method]\n", os.Args[0])
 		fmt.Println("Methods:")
 		fmt.Println("\tpandoc")
-		fmt.Println("\tgodown")
+		fmt.Println("\tgodown (recommended)")
 		os.Exit(1)
 	}
 
@@ -267,6 +267,15 @@ func main() {
 			return nil
 		}
 		outputFile := path.Join(destDir, ReplaceExtension(relativeToSourceDir, "md"))
+		suffixIndex := 0
+		for FileExists(outputFile) {
+			suffixIndex++
+			outputFile = fmt.Sprintf("%s_%d%s",
+				RemoveExtension(outputFile),
+				suffixIndex,
+				path.Ext(outputFile),
+			)
+		}
 		if method == "pandoc" {
 			err = processFilePandoc(abs, outputFile)
 		} else {
