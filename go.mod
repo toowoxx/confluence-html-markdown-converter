@@ -1,6 +1,6 @@
 module confluence-html-markdown-converter
 
-go 1.15
+go 1.17
 
 require (
 	github.com/andybalholm/cascadia v1.2.0
@@ -10,3 +10,5 @@ require (
 	github.com/pkg/errors v0.9.1
 	golang.org/x/net v0.0.0-20210614182718-04defd469f4e
 )
+
+require github.com/rivo/uniseg v0.2.0 // indirect
