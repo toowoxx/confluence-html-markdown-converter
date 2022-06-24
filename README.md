@@ -5,6 +5,12 @@ On average, it should be able to convert about 85% of pages correctly.
 
 The main use case for this is when you need to migrate existing Confluence spaces to a Markdown-based Wiki, like GitLab Wiki.
 
+## Usage
+
+```
+go run . srcdir destdir godown
+```
+
 ## License
 
 ```
